@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="../style/style.css">
+</head>
+<body>
+    <main class="fundoForm">
+            <h1>Cadastrar Filme</h1>
+            <form class="formCadastro">
+                <div class="totalCorpoFormCadastro">
+                    <div class="corpoFormulario">
+                        <label for="titulo">Título do Filme</label>
+                        <input type="text" id="titulo" name="titulo" required />
+                    </div>
+
+                    <div class="corpoFormulario">
+                        <label for="autores">Atores</label>
+                        <input type="text" id="autores" name="autores" />
+                    </div>
+
+                    <div class="corpoFormulario">
+                        <label for="diretores">Diretor(a)</label>
+                        <input type="text" id="diretores" name="diretores" />
+                    </div>
+
+                    <div class="corpoFormulario">
+                        <label for="ano">Ano</label>
+                        <input type="number" id="ano" name="ano" min="1900" max="2100" />
+                    </div>
+
+                    <div class="corpoFormulario">
+                        <label for="genero">Gênero</label>
+                        <input type="text" id="genero" name="genero" />
+                    </div>
+
+                    <div class="corpoFormulario">
+                        <label for="produtora">Produtora</label>
+                        <input type="text" id="produtora" name="produtora" />
+                    </div>
+
+                    <div class="corpoFormulario larguraTotal">
+                        <label for="sinopse">Sinopse</label>
+                        <textarea id="sinopse" name="sinopse" rows="4"></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="botao larguraTotal">Cadastrar</button>
+            </form>
+        </main>
+</body>
+</html>
