@@ -2,7 +2,14 @@ import os
 from http.server import SimpleHTTPRequestHandler, HTTPServer
 from urllib.parse import parse_qs
 import json
-  
+import mysql.connector
+
+# Variável global
+mydb = mysql.connector.connect(
+    host = "localhost",
+    user = "root",
+    password = "senaimange501"
+)  
 
 class MyHandle(SimpleHTTPRequestHandler):
     # Sobrescrevendo list_directory para abrir index.html como padrão
@@ -19,6 +26,21 @@ class MyHandle(SimpleHTTPRequestHandler):
             pass
         return super().list_directory(path)
 
+    def loadMovies(self):
+        cursor = mydb.cursor()
+        cursor.execute("SELECT * FROM locadora.diretor")
+
+        result = cursor.fetchall()
+
+        print("*************************\n", result)
+
+        for res in result:
+            id_diretor = res[0]
+            nome = res[1]
+            sobrenome = res[2]
+            genero = res[3]
+            print(id_diretor, nome, sobrenome, genero)
+
     # Função simples de login
     def account_user(self, login, password):
         loga = "julya@gmail.com"
@@ -31,6 +53,7 @@ class MyHandle(SimpleHTTPRequestHandler):
     # Requisições GET
     def do_GET(self):
         if self.path == "/login":
+            self.loadMovies()
             try:
                 with open(os.path.join(os.getcwd(), "login.html"), "r") as login:
                     content = login.read()
