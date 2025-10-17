@@ -25,7 +25,25 @@ class MyHandle(SimpleHTTPRequestHandler):
         # Caso dê errado:
         except FileNotFoundError:
             return super().list_directory(path)
-        
+
+    def insertFilminhos (SimpleHTTPResquestHandler):
+        def insertFilminhos(self, nome, produtora, orcamento, duracao, ano):
+
+            cursor = mydb.cursor()
+            cursor.execute("INSERT INTO locadora.filme (titulo, id_produtora)")
+            cursor.execute("SELECT id_filme FROM locadora.filme WHERE titulo")
+            resultado = cursor.fetchall()
+            print(resultado)
+            cursor.execute("SELECT * FROM locadora.filme WHERE id_filme = %s")
+            resultado = cursor.fetchall()
+            print(resultado)
+
+            cursor.close()
+            mydb.commit()
+
+            return resultado
+
+
     def loadFilminhos(self):
         cursor = mydb.cursor()
         cursor.execute("SELECT * FROM locadora.diretor")
